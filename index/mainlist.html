@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Movie Lists</title>
+    <link href="../styles/all.css" rel="stylesheet" type="text/css">
+    <link href="../styles/mainlist.css" rel="stylesheet" type="text/css">
+  </head>
+  <body>
+    <div class="container">
+      <h1>Your Movie Lists</h1>
+      <ol>
+      </ol>
+      <input id="list_title_input" type="text" value="">
+      <input id="list_input" type="submit" value="New List">
+
+    </div>
+      <!--JAVASCRIPT-->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script>
+  $(document).ready(function(){
+    var list_title_array =[]
+      $("#list_input").click(function(){
+        $("ol").append("<a href=./movielist.html?list_key=" + $('#list_title_input').val() + "><li>"+ $(list_title_input).val()+ "</li></a>");
+        // "<span>"+ $(number_movies) + "</span><span>" + $(avg_rating) + "</span></li>");
+        list_title_array.push($('#list_title_input').val())
+        //Storage.prototype.setObject = function("stored_list_titles", list_title_array) {
+          //this.setItem(key, JSON.stringify(value));
+        //}
+        $("#list_title_input").val("");
+
+        //console.log(stored_list_titles);
+        //Storage.prototype.getObject = function(key) {
+            //return JSON.parse(this.getItem(key));
+        //}
+      });
+  });
+
+  </script>
+  </body>
+</html>
