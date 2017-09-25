@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>List of Movies</title>
+    <link href="../styles/all.css" rel="stylesheet" type="text/css">
+    <link href="../styles/movielist.css" rel="stylesheet" type="text/css">
+  </head>
+  <body>
+    <div class="container">
+      <h1 id="list_title"></h1>
+      <h3 id="avg_rating"></h3>
+      <ul>
+      </ul>
+      <div class="button">
+        <button id="sort_name" onclick="sort_name()">Sort By Name</button>
+        <button id="sort_rating" onclick="sort_rating()">Sort By Rating</button>
+      </div>
+      <br/>
+      <br/>
+      <input id ="movie_title_input" type="text" name="fname" value="">
+      <input id = "movie_input" type="submit" value="Add Movie">
+    </div>
+
+    <!--JAVASCRIPT-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script>
+      $(document).ready(function(){
+      var list_urlParams = new URLSearchParams(window.location.search);
+        $("#list_title").text(list_urlParams.get("list_key"));
+        var movies_title_array = [];
+        var movies_rating_array = [];
+          $("#movie_input").click(function(){
+            var url_movie_title = $('#movie_title_input').val().split(" ").join("+");
+            var movie_url ='http://www.omdbapi.com/?t=' + url_movie_title + '&apikey=c248f925';
+            $.getJSON(movie_url, function(response){
+            $("ul").append("<a href=./movie.html?movie_key=" + url_movie_title + "><li>" + response.Title + "</li></a>");
+              $("#movie_title_input").val("");
+              movies_title_array.push(reponse.Title);
+          });
+        });
+
+        /*
+
+         if (list_urlParams.get("list_key") === null){
+                movies_title_array.push(response.Title)
+              jQuery.query.set("list_key", movies_title_array);
+              //window.location.search = jQuery.query.set("list_key", JSON.stringify(movies_title_array));
+              //window.localStorage.setItem("cart", JSON.stringify(cart)); // Saving
+              //var cart = JSON.parse(window.localStorage.getItem("cart"));
+          }
+          else{
+            var local_movie_title_array = localStorage.getItem(list_urlParams.get("list_key");
+                  local_movie_title_array.push(reponse.Title);
+            localStorage.setItem(list_urlParams.get("list_key"), local_movie_title_array);
+          }
+        //  return movies_title_array.push(response.Title);
+          //return movies_rating_array.push(response.imdbRating);
+          //var movie_title_array =[]
+        });*/
+    });
+
+/*
+        //SORT BY NAME FUNCTION
+        $("sort_name").click(function(){
+          movies_title_array.sort()
+          $("ul").append(movies_title_array)
+        })
+
+        //SORT BY RAING FUNCTION
+        //Have to sort by rating but still display the title
+*/
+
+    </script>
+  </body>
+</html>
