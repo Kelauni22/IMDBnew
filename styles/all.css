@@ -1,0 +1,56 @@
+body {
+  position: relative;
+  background-color: #bfffef;
+}
+
+.container {
+  position: relative;
+  border: 10px solid #19ffc5;
+  border-radius: 20px;
+  background-color: white;
+  width: 450px;
+  height:650px;
+  top: 30px;
+  margin: auto;
+  padding: 20px;
+}
+
+h1 {
+  font-family: Helvetica;
+  font-weight: 700;
+  text-align: center;
+}
+
+input {
+  position: absolute;
+  font-size: 15px;
+  font-weight: 500;
+  bottom: 8%;
+  left: 20%;
+}
+
+ol {
+  margin-top: 40px;
+}
+
+ul {
+  margin-top: 40px;
+  list-style-type: none;
+}
+
+li {
+  font-size: 25px;
+  padding: 5px;
+}
+
+.button {
+  position: absolute;
+  left: 27%;
+  top: 80%;
+}
+
+button {
+  display: inline-block;
+  font-size: 15px;
+  font-weight: 500;
+}
