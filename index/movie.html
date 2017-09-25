@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Individual Movie</title>
+    <link href="../styles/all.css" rel="stylesheet" type="text/css">
+    <link href="../styles/movie.css" rel="stylesheet" type="text/css">
+  </head>
+  <body>
+    <div class="container">
+      <div id="movie_info"></div>
+      <div id="poster"></div>
+      <div class="buttom">
+        <a href = "./movielist.html"><button>Back to Movies</button></a>
+        <a href = "./mainlist.html"><button>Back to Main Lists</button></a>
+      </div>
+    </div>
+
+      <!--JAVASCRIPT-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script>
+    $(document).ready(function(){
+        var movie_urlParams = new URLSearchParams(window.location.search);
+        var movie_clicked = movie_urlParams.get("movie_key");
+        var movie_url ='http://www.omdbapi.com/?t=' + movie_clicked + '&apikey=c248f925';
+      $.getJSON(movie_url, function(response) {
+        $("#movie_info").html(
+          '<h1 id="movie_title">'+ response.Title +
+          ' <span>' + response.imdbRating +
+          '</span></h1><h3 id="movie_year">'+ response.Year +
+          '</h3><p id="movie_rated">'+ response.Rated +
+          '</p><p id="movie_released">'+ response.Released +
+          '</p><p id="movie_runtime">'+ response.Runtime +
+          '</p><p id="movie_genre">'+ response.Genre +
+          '</p><p id="movie_director">'+ response.Director +
+          '</p><p id="movie_writer">'+ response.Writer +
+          '</p><p id="movie_actors">'+ response.Actors +
+          '</p><p id="movie_plot">'+ response.Plot +
+          '</p><p id="movie_language">'+ response.Language +
+          '</p><p id="movie_country">'+ response.Country +
+          '</p><p id="movie_awards">'+ response.Awards +
+          '</p><p id="movie_website">'+ response.Website +'</p>'
+        );
+    });
+    function back_to_movies(){
+      $(back_to_movies).click(function(){
+
+      })
+    };
+});
+    </script>
+  </body>
+</html>
